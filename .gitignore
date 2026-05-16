@@ -1,0 +1,39 @@
+# Arduino IDE
+*.o
+*.a
+*.so
+build/
+*.d
+.clang_complete
+.gcc-flags.json
+
+# VSCode
+.vscode/
+.VS/
+
+# Build artifacts
+*.elf
+*.bin
+*.hex
+
+# IDE
+.project
+.classpath
+.cproject
+.launches/
+
+# OS
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*~
+
+# Backups
+*.backup
+*.bak
+*.tmp
+
+# Dependencies (if using PlatformIO)
+.pio/
+.platformio/
