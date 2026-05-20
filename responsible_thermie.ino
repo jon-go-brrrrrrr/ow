@@ -8,6 +8,10 @@
 #define MLX_WIDTH 32
 #define MLX_HEIGHT 24
 
+// ESP32-C6 I2C pins
+#define I2C_SDA 6
+#define I2C_SCL 7
+
 Adafruit_MLX90640 mlx;
 TFT_eSPI tft = TFT_eSPI();
 TFT_eSprite sprite = TFT_eSprite(&tft);
@@ -35,7 +39,7 @@ int paletteIndex = 0;
 
 // ============= MLX90640 Functions =============
 void MLXInit() {
-  Wire.begin(0, 1);  // SDA on GPIO 0, SCL on GPIO 1
+  Wire.begin(I2C_SDA, I2C_SCL);  // SDA on GPIO 6, SCL on GPIO 7
   Wire.setClock(1000000);
   if (!mlx.begin()) {
     Serial.println("ERROR: Failed to initialize MLX90640!");
@@ -160,10 +164,11 @@ void setup() {
   Serial.begin(115200);
   delay(1000);
   
-  Serial.println("\n=== Thermal Camera (ESP32 + MLX90640) ===");
+  Serial.println("\n=== Thermal Camera (ESP32-C6 + MLX90640) ===");
   Serial.println("Display: 320x172");
+  Serial.println("I2C: SDA=GPIO6, SCL=GPIO7");
   Serial.println("Mode: Auto Temperature Range");
-  Serial.println("==========================================\n");
+  Serial.println("============================================\n");
   
   tft.init();
   tft.setRotation(1);
